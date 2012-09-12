@@ -1,0 +1,227 @@
+Cmp-Mod V01 Created by CvPcb (2012-06-25 BZR 3630)-stable date = ti 11. syyskuuta 2012 20.53.24
+
+BeginCmp
+TimeStamp = /504F707A;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = SM0603_Capa;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F7087;
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = SM0603_Capa;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F7097;
+Reference = C3;
+ValeurCmp = 4u7;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6DE6;
+Reference = C4;
+ValeurCmp = 1u;
+IdModule  = SM0603_Capa;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F716F;
+Reference = C5;
+ValeurCmp = 22p;
+IdModule  = SM0603_Capa;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F718B;
+Reference = C6;
+ValeurCmp = 22p;
+IdModule  = SM0603_Capa;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6B93;
+Reference = CON1;
+ValeurCmp = ISP;
+IdModule  = pin_array_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6B7E;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6BC1;
+Reference = J1;
+ValeurCmp = USB-MINI-B;
+IdModule  = USB-MINI-B;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6D83;
+Reference = R1;
+ValeurCmp = 22;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6D9F;
+Reference = R2;
+ValeurCmp = 22;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F7282;
+Reference = R3;
+ValeurCmp = 10k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F7440;
+Reference = R4;
+ValeurCmp = 1k;
+IdModule  = SM0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6AEB;
+Reference = SW1;
+ValeurCmp = NUMLOCK;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6915;
+Reference = SW2;
+ValeurCmp = 7;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6921;
+Reference = SW3;
+ValeurCmp = 4;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F691B;
+Reference = SW4;
+ValeurCmp = 1;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69AC;
+Reference = SW5;
+ValeurCmp = 0;
+IdModule  = CHERRY_MX_PCB_D_WIDE;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6AE0;
+Reference = SW6;
+ValeurCmp = /;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6982;
+Reference = SW7;
+ValeurCmp = 8;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F698E;
+Reference = SW8;
+ValeurCmp = 5;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6988;
+Reference = SW9;
+ValeurCmp = 2;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6AD5;
+Reference = SW10;
+ValeurCmp = *;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69A0;
+Reference = SW11;
+ValeurCmp = 9;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6994;
+Reference = SW12;
+ValeurCmp = 6;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F699A;
+Reference = SW13;
+ValeurCmp = 3;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69B2;
+Reference = SW14;
+ValeurCmp = .;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69CE;
+Reference = SW15;
+ValeurCmp = -;
+IdModule  = CHERRY_MX_PCB_D;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69C8;
+Reference = SW16;
+ValeurCmp = +;
+IdModule  = CHERRY_MX_PCB_D_WIDE;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F69C2;
+Reference = SW17;
+ValeurCmp = ENTER;
+IdModule  = CHERRY_MX_PCB_D_WIDE;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F6B06;
+Reference = U1;
+ValeurCmp = AT90USB162;
+IdModule  = TQFP32;
+EndCmp
+
+BeginCmp
+TimeStamp = /504F7160;
+Reference = X1;
+ValeurCmp = CRYSTAL;
+IdModule  = Q_49U3HMS;
+EndCmp
+
+EndListe
