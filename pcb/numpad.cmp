@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-06-25 BZR 3630)-stable date = ti 11. syyskuuta 2012 20.53.24
+Cmp-Mod V01 Created by CvPcb (2012-jan-04)-stable date = Wed 12 Sep 2012 01:03:42 PM EEST
 
 BeginCmp
 TimeStamp = /504F707A;
@@ -53,7 +53,7 @@ BeginCmp
 TimeStamp = /504F6B7E;
 Reference = D1;
 ValeurCmp = LED;
-IdModule  = LED-0805;
+IdModule  = LED-5MM;
 EndCmp
 
 BeginCmp
@@ -61,6 +61,48 @@ TimeStamp = /504F6BC1;
 Reference = J1;
 ValeurCmp = USB-MINI-B;
 IdModule  = USB-MINI-B;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DD3;
+Reference = P1;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DCF;
+Reference = P2;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DC6;
+Reference = P3;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DC7;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DC8;
+Reference = P5;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
+EndCmp
+
+BeginCmp
+TimeStamp = /50505DCA;
+Reference = P6;
+ValeurCmp = CONN_1;
+IdModule  = MTHOLE;
 EndCmp
 
 BeginCmp
