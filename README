@@ -7,12 +7,13 @@ This git repo includes:
  * PCB design files
  * Gerbers
  * Code
-for a USB numpad that uses Cherry MX switches
+for a USB numpad that uses Cherry MX switches.
 
-USB functionality provided by the amazing AVR USB library called LUFA
+The microcontroller used is at90usb162.
 
-All code based heavily on the keyboard example from said library
+USB functionality provided by the amazing AVR USB library called LUFA.
+All code based heavily on the keyboard example from said library.
 
-=== Licences ===
+=== Licenses ===
 Code released under same license as the LUFA example code, the MIT License
 PCB design files released under CC-BY-SA
