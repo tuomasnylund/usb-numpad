@@ -68,13 +68,13 @@
  *  \code
  *      // Initialize the button driver before first use
  *      Buttons_Init();
- *
+ *      
  *      printf("Waiting for button press...\r\n");
- *
+ *      
  *      // Loop until a board button has been pressed
  *      uint8_t ButtonPress;
  *      while (!(ButtonPress = Buttons_GetStatus())) {};
- *
+ *      
  *      // Display which button was pressed (assuming two board buttons)
  *      printf("Button pressed: %s\r\n", (ButtonPress == BUTTONS_BUTTON1) ? "Button 1" : "Button 2");
  *  \endcode
@@ -143,6 +143,12 @@
 			#include "AVR8/MICROPENDOUS/Buttons.h"
 		#elif (BOARD == BOARD_B1_XPLAINED)
 			#include "XMEGA/B1_XPLAINED/Buttons.h"
+		#elif (BOARD == BOARD_OLIMEX32U4)
+			#include "AVR8/OLIMEX32U4/Buttons.h"		
+		#elif (BOARD == BOARD_OLIMEXT32U4)
+			#include "AVR8/OLIMEXT32U4/Buttons.h"		
+		#elif (BOARD == BOARD_OLIMEXISPMK2)
+			#include "AVR8/OLIMEXISPMK2/Buttons.h"	
 		#else
 			#include "Board/Buttons.h"
 		#endif
@@ -156,7 +162,7 @@
 		 */
 		static inline void Buttons_Init(void);
 
-		/** Disables the buttons driver, releasing the I/O pins back to their default high-impedence input mode. */
+		/** Disables the buttons driver, releasing the I/O pins back to their default high-impedance input mode. */
 		static inline void Buttons_Disable(void);
 
 		/** Returns a mask indicating which board buttons are currently pressed.

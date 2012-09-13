@@ -28,6 +28,13 @@
   this software.
 */
 
+/** \dir
+ *  \brief Common library header files.
+ *
+ *  This folder contains header files which are common to all parts of the LUFA library. They may be used freely in
+ *  user applications.
+ */
+
 /** \file
  *  \brief Common library convenience headers, macros and functions.
  *
@@ -61,15 +68,15 @@
 		#include <string.h>
 		#include <stddef.h>
 
-		#if defined(USE_LUFA_CONFIG_HEADER)
-			#include "LUFAConfig.h"
-		#endif
-
 		#include "Architectures.h"
 		#include "BoardTypes.h"
 		#include "ArchitectureSpecific.h"
 		#include "CompilerSpecific.h"
 		#include "Attributes.h"
+
+		#if defined(USE_LUFA_CONFIG_HEADER)
+			#include "LUFAConfig.h"
+		#endif
 
 	/* Enable C linkage for C++ Compilers: */
 		#if defined(__cplusplus)
@@ -102,9 +109,10 @@
 			#include "Endianness.h"
 		#elif (ARCH == ARCH_UC3)
 			#include <avr32/io.h>
+			#include <math.h>
 
 			// === TODO: Find abstracted way to handle these ===
-			#define PROGMEM                  const
+			#define PROGMEM                  
 			#define pgm_read_byte(x)         *x
 			#define memcmp_P(...)            memcmp(__VA_ARGS__)
 			#define memcpy_P(...)            memcpy(__VA_ARGS__)
@@ -153,8 +161,8 @@
 
 			/** Convenience macro to determine the larger of two values.
 			 *
-			 *  \note This macro should only be used with operands that do not have side effects from being evaluated
-			 *        multiple times.
+			 *  \attention This macro should only be used with operands that do not have side effects from being evaluated
+			 *             multiple times.
 			 *
 			 *  \param[in] x  First value to compare
 			 *  \param[in] y  First value to compare
@@ -167,8 +175,8 @@
 
 			/** Convenience macro to determine the smaller of two values.
 			 *
-			 *  \note This macro should only be used with operands that do not have side effects from being evaluated
-			 *        multiple times.
+			 *  \attention This macro should only be used with operands that do not have side effects from being evaluated
+			 *             multiple times.
 			 *
 			 *  \param[in] x  First value to compare
 			 *  \param[in] y  First value to compare
@@ -212,7 +220,7 @@
 				 *
 				 *  \ingroup Group_GlobalInt
 				 *
-				 *  \param Name  Unique name of the interrupt service routine.
+				 *  \param[in] Name  Unique name of the interrupt service routine.
 				 */
 				#define ISR(Name, ...)          void Name (void) __attribute__((__interrupt__)) __VA_ARGS__; void Name (void)
 			#endif
@@ -293,8 +301,6 @@
 				#elif (ARCH == ARCH_XMEGA)
 				return SREG;
 				#endif
-
-				GCC_MEMORY_BARRIER();
 			}
 
 			/** Sets the global interrupt enable state of the microcontroller to the mask passed into the function.

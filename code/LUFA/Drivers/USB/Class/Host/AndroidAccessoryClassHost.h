@@ -85,22 +85,11 @@
 			{
 				struct
 				{
-					uint8_t  DataINPipeNumber; /**< Pipe number of the AOA interface's IN data pipe. */
-					bool     DataINPipeDoubleBank; /**< Indicates if the AOA interface's IN data pipe should use double banking. */
-
-					uint8_t  DataOUTPipeNumber; /**< Pipe number of the AOA interface's OUT data pipe. */
-					bool     DataOUTPipeDoubleBank; /**< Indicates if the AOA interface's OUT data pipe should use double banking. */
+					USB_Pipe_Table_t DataINPipe; /**< Data IN Pipe configuration table. */
+					USB_Pipe_Table_t DataOUTPipe; /**< Data OUT Pipe configuration table. */
 					
-					struct
-					{
-						char* Manufacturer; /**< Device manufacturer string. */
-						char* Model; /**< Device model name string. */
-						char* Description; /**< Device description string. */
-						char* Version; /**< Device version string. */
-						char* URI; /**< Device URI information string. */
-						char* Serial; /**< Device serial number string. */
-					} ATTR_PACKED PropertyStrings; /**< Android Accessory property strings, sent to identify the accessory when the
-					                                *   Android device is switched into Open Accessory mode. */
+					char*    PropertyStrings[AOA_STRING_TOTAL_STRINGS]; /**< Android Accessory property strings, sent to identify the accessory when the
+					                                                     *   Android device is switched into Open Accessory mode. */
 				} Config; /**< Config data for the USB class interface within the device. All elements in this section
 				           *   <b>must</b> be set or the interface will fail to enumerate and operate correctly.
 				           */
@@ -111,9 +100,6 @@
 					                *   Configured state.
 					                */
 					uint8_t  InterfaceNumber; /**< Interface index of the AOA interface within the attached device. */
-
-					uint16_t DataINPipeSize; /**< Size in bytes of the AOA interface's IN data pipe. */
-					uint16_t DataOUTPipeSize;  /**< Size in bytes of the AOA interface's OUT data pipe. */
 				} State; /**< State data for the USB class interface within the device. All elements in this section
 						  *   <b>may</b> be set to initial values, but may also be ignored to default to sane values when
 						  *   the interface is enumerated.
@@ -170,7 +156,7 @@
 			 *
 			 *  \param[in,out] AOAInterfaceInfo  Pointer to a structure containing an AOA Class host configuration and state.
 			 *
-			 *  \return A value from the \ref USB_Host_SendControlErrorCodes_t enum, or \ref AOA_ERROR_LOGICAL_CMD_FAILED if a logical error occured..
+			 *  \return A value from the \ref USB_Host_SendControlErrorCodes_t enum, or \ref AOA_ERROR_LOGICAL_CMD_FAILED if a logical error occurred..
 			 */
 			uint8_t AOA_Host_StartAccessoryMode(USB_ClassInfo_AOA_Host_t* const AOAInterfaceInfo) ATTR_NON_NULL_PTR_ARG(1);
 
@@ -271,7 +257,7 @@
 			 *  be used when the read data is processed byte-per-bye (via \c getc()) or when the user application will implement its own
 			 *  line buffering.
 			 *
-			 *  \note The created stream can be given as stdout if desired to direct the standard output from all \c <stdio.h> functions
+			 *  \note The created stream can be given as \c stdout if desired to direct the standard output from all \c <stdio.h> functions
 			 *        to the given AOA interface.
 			 *        \n\n
 			 *

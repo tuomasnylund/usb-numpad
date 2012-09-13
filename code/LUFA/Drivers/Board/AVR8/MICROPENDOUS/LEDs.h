@@ -52,9 +52,21 @@
 
 /** \ingroup Group_LEDs
  *  \defgroup Group_LEDs_MICROPENDOUS_32U2 MICROPENDOUS_32U2
- *  \brief Board specific LED driver header for the Micropendous 32U2.
+ *  \brief Board specific LED driver header for the Micropendous-32U2.
  *
  *  Board specific LED driver header for the Micropendous 32U2 (https://code.google.com/p/micropendous/wiki/Micropendous_32U2).
+ *
+ *  <b>BOARD_MICROPENDOUS_32U2</b>:
+ *  <table>
+ *    <tr><th>Name</th><th>Color</th><th>Info</th><th>Active Level</th><th>Port Pin</th></tr>
+ *    <tr><td>LEDS_LED1</td><td>Green</td><td>General Indicator</td><td>High</td><td>PORTD.6</td></tr>
+ *  </table>
+ *
+ *  <b>Other Revisions</b>:
+ *  <table>
+ *    <tr><th>Name</th><th>Color</th><th>Info</th><th>Active Level</th><th>Port Pin</th></tr>
+ *    <tr><td>LEDS_LED1</td><td>Green</td><td>General Indicator</td><td>High</td><td>PORTB.1</td></tr>
+ *  </table>
  *
  *  @{
  */
@@ -92,6 +104,7 @@
 		#define _BOARD_LED_CONCAT(Reg, Letter)      _BOARD_LED_CONCAT2(Reg, Letter)
 
 		#define _BOARD_LED_PORT                     _BOARD_LED_CONCAT(PORT, _BOARD_LED_PORTLETTER)
+		#define _BOARD_LED_PIN                      _BOARD_LED_CONCAT(PIN,  _BOARD_LED_PORTLETTER)
 		#define _BOARD_LED_DDR                      _BOARD_LED_CONCAT(DDR,  _BOARD_LED_PORTLETTER)
 	#endif
 
@@ -132,18 +145,18 @@
 
 			static inline void LEDs_SetAllLEDs(const uint8_t LEDMask)
 			{
-				_BOARD_LED_PORT = ((PORTF & ~LEDS_ALL_LEDS) | LEDMask);
+				_BOARD_LED_PORT = ((_BOARD_LED_PORT & ~LEDS_ALL_LEDS) | LEDMask);
 			}
 
 			static inline void LEDs_ChangeLEDs(const uint8_t LEDMask,
 			                                   const uint8_t ActiveMask)
 			{
-				_BOARD_LED_PORT = ((PORTF & ~LEDMask) | ActiveMask);
+				_BOARD_LED_PORT = ((_BOARD_LED_PORT & ~LEDMask) | ActiveMask);
 			}
 
 			static inline void LEDs_ToggleLEDs(const uint8_t LEDMask)
 			{
-				_BOARD_LED_PORT ^= LEDMask;
+				_BOARD_LED_PIN  = LEDMask;
 			}
 
 			static inline uint8_t LEDs_GetLEDs(void) ATTR_WARN_UNUSED_RESULT;

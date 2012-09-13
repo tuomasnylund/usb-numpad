@@ -91,12 +91,12 @@
 
 		/* Global Variables: */
 			/** Indicates the currently set configuration number of the attached device. This indicates the currently
-			 *  selected configuration value if one has been set sucessfully, or 0 if no configuration has been selected.
+			 *  selected configuration value if one has been set successfully, or 0 if no configuration has been selected.
 			 *
 			 *  To set a device configuration, call the \ref USB_Host_SetDeviceConfiguration() function.
 			 *
-			 *  \note This variable should be treated as read-only in the user application, and never manually
-			 *        changed in value.
+			 *  \attention This variable should be treated as read-only in the user application, and never manually
+			 *             changed in value.
 			 *
 			 *  \ingroup Group_Host
 			 */
@@ -278,6 +278,7 @@
 
 		/* Function Prototypes: */
 			#if defined(__INCLUDE_FROM_HOSTSTDREQ_C)
+				static uint8_t USB_Host_SendControlRequest_PRV(void* const BufferPtr);
 				static uint8_t USB_Host_WaitForIOS(const uint8_t WaitType);
 			#endif
 	#endif

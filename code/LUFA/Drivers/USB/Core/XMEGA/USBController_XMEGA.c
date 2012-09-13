@@ -28,6 +28,9 @@
   this software.
 */
 
+#include "../../../../Common/Common.h"
+#if (ARCH == ARCH_XMEGA)
+
 #define  __INCLUDE_FROM_USB_DRIVER
 #define  __INCLUDE_FROM_USB_CONTROLLER_C
 #include "../USBController.h"
@@ -40,7 +43,8 @@ volatile uint8_t USB_CurrentMode = USB_MODE_None;
 volatile uint8_t USB_Options;
 #endif
 
-USB_EndpointTable_t USB_EndpointTable ATTR_ALIGNED(4);
+/* Ugly workaround to ensure an aligned table, since __BIGGEST_ALIGNMENT__ == 1 for 8-bit AVR-GCC */
+uint8_t USB_EndpointTable[sizeof(USB_EndpointTable_t) + 1];
 
 void USB_Init(
                #if defined(USB_CAN_BE_BOTH)
@@ -72,8 +76,9 @@ void USB_Init(
 	USB.CAL1 = pgm_read_byte(offsetof(NVM_PROD_SIGNATURES_t, USBCAL1));
 	NVM.CMD  = 0;
 
-	USB.EPPTR = (intptr_t)&USB_EndpointTable;
-	USB.CTRLA = (USB_STFRNUM_bm | USB_MAXEP_gm);
+	/* Ugly workaround to ensure an aligned table, since __BIGGEST_ALIGNMENT__ == 1 for the 8-bit AVR-GCC toochain */
+	USB.EPPTR = ((intptr_t)&USB_EndpointTable[1] & ~(1 << 0));
+	USB.CTRLA = (USB_STFRNUM_bm | ((ENDPOINT_TOTAL_ENDPOINTS - 1) << USB_MAXEP_gp));
 
 	if ((USB_Options & USB_OPT_BUSEVENT_PRIHIGH) == USB_OPT_BUSEVENT_PRIHIGH)
 	  USB.INTCTRLA = (3 << USB_INTLVL_gp);
@@ -100,13 +105,17 @@ void USB_Disable(void)
 
 void USB_ResetInterface(void)
 {
+	#if defined(USB_DEVICE_OPT_FULLSPEED)
 	if (USB_Options & USB_DEVICE_OPT_LOWSPEED)
 	  CLK.USBCTRL = (((F_USB / 6000000) - 1) << CLK_USBPSDIV_gp);
 	else
 	  CLK.USBCTRL = (((F_USB / 48000000) - 1) << CLK_USBPSDIV_gp);
-
+	#else
+	CLK.USBCTRL = (((F_USB / 6000000) - 1) << CLK_USBPSDIV_gp);
+	#endif
+	
 	if (USB_Options & USB_OPT_PLLCLKSRC)
-	  CLK.USBCTRL |= (CLK_USBSRC_PLL_gc | CLK_USBSEN_bm);
+	  CLK.USBCTRL |= (CLK_USBSRC_PLL_gc   | CLK_USBSEN_bm);
 	else
 	  CLK.USBCTRL |= (CLK_USBSRC_RC32M_gc | CLK_USBSEN_bm);
 
@@ -169,8 +178,7 @@ static void USB_Init_Device(void)
 	  USB_Device_SetFullSpeed();
 
 	Endpoint_ConfigureEndpoint(ENDPOINT_CONTROLEP, EP_TYPE_CONTROL,
-							   ENDPOINT_DIR_OUT, USB_Device_ControlEndpointSize,
-							   ENDPOINT_BANK_SINGLE);
+							   USB_Device_ControlEndpointSize, 1);
 
 	USB_INT_Enable(USB_INT_BUSEVENTI);
 
@@ -178,3 +186,4 @@ static void USB_Init_Device(void)
 }
 #endif
 
+#endif

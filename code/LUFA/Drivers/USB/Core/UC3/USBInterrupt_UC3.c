@@ -28,6 +28,9 @@
   this software.
 */
 
+#include "../../../../Common/Common.h"
+#if (ARCH == ARCH_UC3)
+
 #define  __INCLUDE_FROM_USB_DRIVER
 #include "../USBInterrupt.h"
 
@@ -118,8 +121,7 @@ ISR(USB_GEN_vect)
 
 		USB_Device_SetDeviceAddress(0);
 		Endpoint_ConfigureEndpoint(ENDPOINT_CONTROLEP, EP_TYPE_CONTROL,
-		                           ENDPOINT_DIR_OUT, USB_Device_ControlEndpointSize,
-		                           ENDPOINT_BANK_SINGLE);
+		                           USB_Device_ControlEndpointSize, 1);
 
 		#if defined(INTERRUPT_CONTROL_ENDPOINT)
 		USB_INT_Enable(USB_INT_RXSTPI);
@@ -223,3 +225,4 @@ ISR(USB_COM_vect)
 }
 #endif
 
+#endif

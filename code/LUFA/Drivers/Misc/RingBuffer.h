@@ -65,23 +65,23 @@
  *      // Create the buffer structure and its underlying storage array
  *      RingBuffer_t Buffer;
  *      uint8_t      BufferData[128];
- *
+ *      
  *      // Initialize the buffer with the created storage array
  *      RingBuffer_InitBuffer(&Buffer, BufferData, sizeof(BufferData));
- *
+ *      
  *      // Insert some data into the buffer
  *      RingBuffer_Insert(Buffer, 'H');
  *      RingBuffer_Insert(Buffer, 'E');
  *      RingBuffer_Insert(Buffer, 'L');
  *      RingBuffer_Insert(Buffer, 'L');
  *      RingBuffer_Insert(Buffer, 'O');
- *
+ *      
  *      // Cache the number of stored bytes in the buffer
  *      uint16_t BufferCount = RingBuffer_GetCount(&Buffer);
- *
+ *      
  *      // Printer stored data length
  *      printf("Buffer Length: %d, Buffer Data: \r\n", BufferCount);
- *
+ *      
  *      // Print contents of the buffer one character at a time
  *      while (BufferCount--)
  *        putc(RingBuffer_Remove(&Buffer));
@@ -225,9 +225,9 @@
 
 		/** Inserts an element into the ring buffer.
 		 *
-		 *  \note Only one execution thread (main program thread or an ISR) may insert into a single buffer
-		 *        otherwise data corruption may occur. Insertion and removal may occur from different execution
-		 *        threads.
+		 *  \warning Only one execution thread (main program thread or an ISR) may insert into a single buffer
+		 *           otherwise data corruption may occur. Insertion and removal may occur from different execution
+		 *           threads.
 		 *
 		 *  \param[in,out] Buffer  Pointer to a ring buffer structure to insert into.
 		 *  \param[in]     Data    Data element to insert into the buffer.
@@ -252,9 +252,9 @@
 
 		/** Removes an element from the ring buffer.
 		 *
-		 *  \note Only one execution thread (main program thread or an ISR) may remove from a single buffer
-		 *        otherwise data corruption may occur. Insertion and removal may occur from different execution
-		 *        threads.
+		 *  \warning Only one execution thread (main program thread or an ISR) may remove from a single buffer
+		 *           otherwise data corruption may occur. Insertion and removal may occur from different execution
+		 *           threads.
 		 *
 		 *  \param[in,out] Buffer  Pointer to a ring buffer structure to retrieve from.
 		 *

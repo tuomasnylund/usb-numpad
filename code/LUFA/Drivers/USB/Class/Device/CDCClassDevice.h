@@ -53,16 +53,17 @@
  *
  *        One major issue with CDC-ACM is that it requires two Interface descriptors,
  *        which will upset most hosts when part of a multi-function "Composite" USB
- *        device, as each interface will be loaded into a separate driver instance. To
- *        combat this, you should use the "Interface Association Descriptor" addendum to
- *        the USB standard which is available on most OSes when creating Composite devices.
+ *        device. This is because each interface will be loaded into a separate driver
+ *        instance, causing the two interfaces be become unlinked. To prevent this, you
+ *        should use the "Interface Association Descriptor" addendum to the USB 2.0 standard
+ *        which is available on most OSes when creating Composite devices.
  *
  *        Another major oversight is that there is no mechanism for the host to notify the
  *        device that there is a data sink on the host side ready to accept data. This
  *        means that the device may try to send data while the host isn't listening, causing
- *        lengthy blocking timeouts in the transmission routines. To combat this, it is
- *        recommended that the virtual serial line DTR (Data Terminal Ready) be used where
- *        possible to determine if a host application is ready for data.
+ *        lengthy blocking timeouts in the transmission routines. It is thus highly recommended
+ *        that the virtual serial line DTR (Data Terminal Ready) signal be used where possible
+ *        to determine if a host application is ready for data.
  *
  *  @{
  */
@@ -98,19 +99,11 @@
 			{
 				struct
 				{
-					uint8_t  ControlInterfaceNumber; /**< Interface number of the CDC control interface within the device. */
-
-					uint8_t  DataINEndpointNumber; /**< Endpoint number of the CDC interface's IN data endpoint. */
-					uint16_t DataINEndpointSize; /**< Size in bytes of the CDC interface's IN data endpoint. */
-					bool     DataINEndpointDoubleBank; /**< Indicates if the CDC interface's IN data endpoint should use double banking. */
-
-					uint8_t  DataOUTEndpointNumber; /**< Endpoint number of the CDC interface's OUT data endpoint. */
-					uint16_t DataOUTEndpointSize;  /**< Size in bytes of the CDC interface's OUT data endpoint. */
-					bool     DataOUTEndpointDoubleBank; /**< Indicates if the CDC interface's OUT data endpoint should use double banking. */
-
-					uint8_t  NotificationEndpointNumber; /**< Endpoint number of the CDC interface's IN notification endpoint, if used. */
-					uint16_t NotificationEndpointSize;  /**< Size in bytes of the CDC interface's IN notification endpoint, if used. */
-					bool     NotificationEndpointDoubleBank; /**< Indicates if the CDC interface's notification endpoint should use double banking. */
+					uint8_t ControlInterfaceNumber; /**< Interface number of the CDC control interface within the device. */
+					
+					USB_Endpoint_Table_t DataINEndpoint; /**< Data IN endpoint configuration table. */
+					USB_Endpoint_Table_t DataOUTEndpoint; /**< Data OUT endpoint configuration table. */
+					USB_Endpoint_Table_t NotificationEndpoint; /**< Notification IN Endpoint configuration table. */
 				} Config; /**< Config data for the USB class interface within the device. All elements in this section
 				           *   <b>must</b> be set or the interface will fail to enumerate and operate correctly.
 				           */
@@ -290,6 +283,7 @@
 			 */
 			void CDC_Device_SendControlLineStateChange(USB_ClassInfo_CDC_Device_t* const CDCInterfaceInfo) ATTR_NON_NULL_PTR_ARG(1);
 
+			#if defined(FDEV_SETUP_STREAM) || defined(__DOXYGEN__)
 			/** Creates a standard character stream for the given CDC Device instance so that it can be used with all the regular
 			 *  functions in the standard <stdio.h> library that accept a \c FILE stream as a destination (e.g. \c fprintf()). The created
 			 *  stream is bidirectional and can be used for both input and output functions.
@@ -299,7 +293,7 @@
 			 *  be used when the read data is processed byte-per-bye (via \c getc()) or when the user application will implement its own
 			 *  line buffering.
 			 *
-			 *  \note The created stream can be given as stdout if desired to direct the standard output from all <stdio.h> functions
+			 *  \note The created stream can be given as \c stdout if desired to direct the standard output from all <stdio.h> functions
 			 *        to the given CDC interface.
 			 *        \n\n
 			 *
@@ -321,7 +315,8 @@
 			 */
 			void CDC_Device_CreateBlockingStream(USB_ClassInfo_CDC_Device_t* const CDCInterfaceInfo,
 			                                     FILE* const Stream) ATTR_NON_NULL_PTR_ARG(1) ATTR_NON_NULL_PTR_ARG(2);
-
+			#endif
+			
 	/* Private Interface - For use in library only: */
 	#if !defined(__DOXYGEN__)
 		/* Function Prototypes: */

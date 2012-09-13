@@ -1,13 +1,18 @@
 /*
+  Modified by Tuomas Nylund 2012 ( tuomas.nylund@gmail.com )
+  for USB numpad 
+ */
+
+/*
              LUFA Library
-     Copyright (C) Dean Camera, 2011.
+     Copyright (C) Dean Camera, 2012.
 
   dean [at] fourwalledcubicle [dot] com
            www.lufa-lib.org
 */
 
 /*
-  Copyright 2011  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  Copyright 2012  Dean Camera (dean [at] fourwalledcubicle [dot] com)
 
   Permission to use, copy, modify, distribute, and sell this
   software and its documentation for any purpose is hereby granted
@@ -37,17 +42,19 @@
 
 #include "Descriptors.h"
 
-/* On some devices, there is a factory set internal serial number which can be automatically sent to the host as
- * the device's serial number when the Device Descriptor's .SerialNumStrIndex entry is set to USE_INTERNAL_SERIAL.
- * This allows the host to track a device across insertions on different ports, allowing them to retain allocated
- * resources like COM port numbers and drivers. On demos using this feature, give a warning on unsupported devices
- * so that the user can supply their own serial number descriptor instead or remove the USE_INTERNAL_SERIAL value
- * from the Device Descriptor (forcing the host to generate a serial number for each device from the VID, PID and
- * port location).
+/** HID class report descriptor. This is a special descriptor constructed with values from the
+ *  USBIF HID class specification to describe the reports and capabilities of the HID device. This
+ *  descriptor is parsed by the host and its contents used to determine what data (and in what encoding)
+ *  the device will send, and what it may be sent back from the host. Refer to the HID specification for
+ *  more details on HID report descriptors.
  */
-#if (USE_INTERNAL_SERIAL == NO_DESCRIPTOR)
-	#warning USE_INTERNAL_SERIAL is not available on this AVR - please manually construct a device serial descriptor.
-#endif
+const USB_Descriptor_HIDReport_Datatype_t PROGMEM KeyboardReport[] =
+{
+	/* Use the HID class driver's standard Keyboard report.
+	 *   Max simultaneous keys: 6
+	 */
+	HID_DESCRIPTOR_KEYBOARD(6)
+};
 
 /** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall
  *  device characteristics, including the supported USB version, control endpoint size and the
@@ -59,19 +66,19 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
 	.Header                 = {.Size = sizeof(USB_Descriptor_Device_t), .Type = DTYPE_Device},
 
 	.USBSpecification       = VERSION_BCD(01.10),
-	.Class                  = CDC_CSCP_CDCClass,
-	.SubClass               = CDC_CSCP_NoSpecificSubclass,
-	.Protocol               = CDC_CSCP_NoSpecificProtocol,
+	.Class                  = USB_CSCP_NoDeviceClass,
+	.SubClass               = USB_CSCP_NoDeviceSubclass,
+	.Protocol               = USB_CSCP_NoDeviceProtocol,
 
 	.Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,
 
 	.VendorID               = 0x1313,
-	.ProductID              = 0x0001,
+	.ProductID              = 0x0013,
 	.ReleaseNumber          = VERSION_BCD(00.01),
 
 	.ManufacturerStrIndex   = 0x01,
 	.ProductStrIndex        = 0x02,
-	.SerialNumStrIndex      = USE_INTERNAL_SERIAL,
+	.SerialNumStrIndex      = NO_DESCRIPTOR,
 
 	.NumberOfConfigurations = FIXED_NUM_CONFIGURATIONS
 };
@@ -88,102 +95,52 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 			.Header                 = {.Size = sizeof(USB_Descriptor_Configuration_Header_t), .Type = DTYPE_Configuration},
 
 			.TotalConfigurationSize = sizeof(USB_Descriptor_Configuration_t),
-			.TotalInterfaces        = 2,
+			.TotalInterfaces        = 1,
 
 			.ConfigurationNumber    = 1,
 			.ConfigurationStrIndex  = NO_DESCRIPTOR,
 
-			.ConfigAttributes       = (USB_CONFIG_ATTR_RESERVED),
+			.ConfigAttributes       = (USB_CONFIG_ATTR_RESERVED | USB_CONFIG_ATTR_SELFPOWERED),
 
 			.MaxPowerConsumption    = USB_CONFIG_POWER_MA(100)
 		},
 
-	.CDC_CCI_Interface =
+	.HID_Interface =
 		{
 			.Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
 
-			.InterfaceNumber        = 0,
-			.AlternateSetting       = 0,
+			.InterfaceNumber        = 0x00,
+			.AlternateSetting       = 0x00,
 
 			.TotalEndpoints         = 1,
 
-			.Class                  = CDC_CSCP_CDCClass,
-			.SubClass               = CDC_CSCP_ACMSubclass,
-			.Protocol               = CDC_CSCP_ATCommandProtocol,
+			.Class                  = HID_CSCP_HIDClass,
+			.SubClass               = HID_CSCP_BootSubclass,
+			.Protocol               = HID_CSCP_KeyboardBootProtocol,
 
 			.InterfaceStrIndex      = NO_DESCRIPTOR
 		},
 
-	.CDC_Functional_Header =
+	.HID_KeyboardHID =
 		{
-			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalHeader_t), .Type = DTYPE_CSInterface},
-			.Subtype                = CDC_DSUBTYPE_CSInterface_Header,
+			.Header                 = {.Size = sizeof(USB_HID_Descriptor_HID_t), .Type = HID_DTYPE_HID},
 
-			.CDCSpecification       = VERSION_BCD(01.10),
+			.HIDSpec                = VERSION_BCD(01.11),
+			.CountryCode            = 0x00,
+			.TotalReportDescriptors = 1,
+			.HIDReportType          = HID_DTYPE_Report,
+			.HIDReportLength        = sizeof(KeyboardReport)
 		},
 
-	.CDC_Functional_ACM =
-		{
-			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalACM_t), .Type = DTYPE_CSInterface},
-			.Subtype                = CDC_DSUBTYPE_CSInterface_ACM,
-
-			.Capabilities           = 0x06,
-		},
-
-	.CDC_Functional_Union =
-		{
-			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalUnion_t), .Type = DTYPE_CSInterface},
-			.Subtype                = CDC_DSUBTYPE_CSInterface_Union,
-
-			.MasterInterfaceNumber  = 0,
-			.SlaveInterfaceNumber   = 1,
-		},
-
-	.CDC_NotificationEndpoint =
+	.HID_ReportINEndpoint =
 		{
 			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
 
-			.EndpointAddress        = (ENDPOINT_DIR_IN | CDC_NOTIFICATION_EPNUM),
+			.EndpointAddress        = KEYBOARD_EPADDR,
 			.Attributes             = (EP_TYPE_INTERRUPT | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
-			.EndpointSize           = CDC_NOTIFICATION_EPSIZE,
-			.PollingIntervalMS      = 0xFF
+			.EndpointSize           = KEYBOARD_EPSIZE,
+			.PollingIntervalMS      = 0x05
 		},
-
-	.CDC_DCI_Interface =
-		{
-			.Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
-
-			.InterfaceNumber        = 1,
-			.AlternateSetting       = 0,
-
-			.TotalEndpoints         = 2,
-
-			.Class                  = CDC_CSCP_CDCDataClass,
-			.SubClass               = CDC_CSCP_NoDataSubclass,
-			.Protocol               = CDC_CSCP_NoDataProtocol,
-
-			.InterfaceStrIndex      = NO_DESCRIPTOR
-		},
-
-	.CDC_DataOutEndpoint =
-		{
-			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
-
-			.EndpointAddress        = (ENDPOINT_DIR_OUT | CDC_RX_EPNUM),
-			.Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
-			.EndpointSize           = CDC_TXRX_EPSIZE,
-			.PollingIntervalMS      = 0x01
-		},
-
-	.CDC_DataInEndpoint =
-		{
-			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
-
-			.EndpointAddress        = (ENDPOINT_DIR_IN | CDC_TX_EPNUM),
-			.Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
-			.EndpointSize           = CDC_TXRX_EPSIZE,
-			.PollingIntervalMS      = 0x01
-		}
 };
 
 /** Language descriptor structure. This descriptor, located in FLASH memory, is returned when the host requests
@@ -203,9 +160,9 @@ const USB_Descriptor_String_t PROGMEM LanguageString =
  */
 const USB_Descriptor_String_t PROGMEM ManufacturerString =
 {
-	.Header                 = {.Size = USB_STRING_LEN(13), .Type = DTYPE_String},
+	.Header                 = {.Size = USB_STRING_LEN(18), .Type = DTYPE_String},
 
-	.UnicodeString          = L"Tuomas Nylund"
+	.UnicodeString          = L"Random Electronics"
 };
 
 /** Product descriptor string. This is a Unicode string containing the product's details in human readable form,
@@ -214,9 +171,9 @@ const USB_Descriptor_String_t PROGMEM ManufacturerString =
  */
 const USB_Descriptor_String_t PROGMEM ProductString =
 {
-	.Header                 = {.Size = USB_STRING_LEN(19), .Type = DTYPE_String},
+	.Header                 = {.Size = USB_STRING_LEN(13), .Type = DTYPE_String},
 
-	.UnicodeString          = L"Test Virtual Serial"
+	.UnicodeString          = L"Cherry Numpad"
 };
 
 /** This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors"
@@ -262,6 +219,14 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
 					break;
 			}
 
+			break;
+		case HID_DTYPE_HID:
+			Address = &ConfigurationDescriptor.HID_KeyboardHID;
+			Size    = sizeof(USB_HID_Descriptor_HID_t);
+			break;
+		case HID_DTYPE_Report:
+			Address = &KeyboardReport;
+			Size    = sizeof(KeyboardReport);
 			break;
 	}
 
