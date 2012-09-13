@@ -1,0 +1,18 @@
+==== USB Cherry Numpad ====
+by Tuomas Nylund
+http://tuomasnylund.fi
+tuomas.nylund@gmail.com
+
+This git repo includes:
+ * PCB design files
+ * Gerbers
+ * Code
+for a USB numpad that uses Cherry MX switches
+
+USB functionality provided by the amazing AVR USB library called LUFA
+
+All code based heavily on the keyboard example from said library
+
+=== Licences ===
+Code released under same license as the LUFA example code, the MIT License
+PCB design files released under CC-BY-SA
