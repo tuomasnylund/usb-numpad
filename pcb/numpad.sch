@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date to 13. syyskuuta 2012 16.19.21
+EESchema Schematic File Version 2  date pe 14. syyskuuta 2012 11.25.54
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -37,7 +37,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "USB Cherry Numpad"
-Date "13 sep 2012"
+Date "14 sep 2012"
 Rev "1"
 Comp "Tuomas Nylund"
 Comment1 ""
@@ -132,7 +132,7 @@ Wire Wire Line
 Wire Wire Line
 	6450 2300 6550 2300
 Wire Wire Line
-	7100 4000 7100 2300
+	7100 2000 7100 4000
 Wire Wire Line
 	7100 2300 6950 2300
 Wire Wire Line
@@ -817,4 +817,20 @@ Text Notes 7350 2350 0    60   ~ 0
 keypad
 Text Notes 700  800  0    60   ~ 0
 bypass caps for microcontroller
+$Comp
+L LED D2
+U 1 1 5052EB74
+P 6750 2000
+F 0 "D2" H 6750 2100 50  0000 C CNN
+F 1 "LED" H 6750 1900 50  0000 C CNN
+	1    6750 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 2000 7100 2000
+Wire Wire Line
+	6500 2300 6500 2000
+Wire Wire Line
+	6500 2000 6550 2000
+Connection ~ 6500 2300
 $EndSCHEMATC

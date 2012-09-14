@@ -1,221 +1,195 @@
-# EESchema Netlist Version 1.1 created  Wed 12 Sep 2012 01:03:42 PM EEST
+# EESchema Netlist Version 1.1 created  pe 14. syyskuuta 2012 11.25.50
 (
- ( /504F707A SM0603_Capa C1 100n
-  ( 1 +5V )
-  ( 2 GND )
+ ( /50505DD3 $noname  P1 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F7087 SM0603_Capa C2 100n
-  ( 1 +5V )
-  ( 2 GND )
+ ( /50505DCF $noname  P2 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F7097 SM0805 C3 4u7
-  ( 1 +5V )
-  ( 2 GND )
+ ( /50505DCA $noname  P6 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F6DE6 SM0603_Capa C4 1u
-  ( 1 N-000001 )
-  ( 2 GND )
+ ( /50505DC8 $noname  P5 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F716F SM0603_Capa C5 22p
-  ( 1 /XTAL1 )
-  ( 2 GND )
+ ( /50505DC7 $noname  P4 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F718B SM0603_Capa C6 22p
-  ( 1 /XTAL2 )
-  ( 2 GND )
+ ( /50505DC6 $noname  P3 CONN_1 {Lib=CONN_1}
+  (    1 GND )
  )
- ( /504F6B93 pin_array_3x2 CON1 ISP
-  ( 1 /ISP_MISO )
-  ( 2 +5V )
-  ( 3 /ISP_SCK )
-  ( 4 /ISP_MOSI )
-  ( 5 /ISP_RESET )
-  ( 6 GND )
+ ( /504F6915 $noname  SW2 7 {Lib=SW_PUSH}
+  (    1 /SW_7 )
+  (    2 GND )
  )
- ( /504F6B7E LED-5MM D1 LED
-  ( 1 N-000014 )
-  ( 2 GND )
+ ( /504F691B $noname  SW4 1 {Lib=SW_PUSH}
+  (    1 /SW1 )
+  (    2 GND )
  )
- ( /504F6BC1 USB-MINI-B J1 USB-MINI-B
-  ( 1 +5V )
-  ( 2 N-000004 )
-  ( 3 N-000003 )
-  ( 4 ? )
-  ( 5 GND )
+ ( /504F6921 $noname  SW3 4 {Lib=SW_PUSH}
+  (    1 /SW_4 )
+  (    2 GND )
  )
- ( /50505DD3 MTHOLE P1 CONN_1
-  ( 1 GND )
+ ( /504F698E $noname  SW8 5 {Lib=SW_PUSH}
+  (    1 /SW5 )
+  (    2 GND )
  )
- ( /50505DCF MTHOLE P2 CONN_1
-  ( 1 GND )
+ ( /504F6988 $noname  SW9 2 {Lib=SW_PUSH}
+  (    1 /SW2 )
+  (    2 GND )
  )
- ( /50505DC6 MTHOLE P3 CONN_1
-  ( 1 GND )
+ ( /504F6982 $noname  SW7 8 {Lib=SW_PUSH}
+  (    1 /SW8 )
+  (    2 GND )
  )
- ( /50505DC7 MTHOLE P4 CONN_1
-  ( 1 GND )
+ ( /504F6994 $noname  SW12 6 {Lib=SW_PUSH}
+  (    1 /SW_6 )
+  (    2 GND )
  )
- ( /50505DC8 MTHOLE P5 CONN_1
-  ( 1 GND )
+ ( /504F699A $noname  SW13 3 {Lib=SW_PUSH}
+  (    1 /SW_3 )
+  (    2 GND )
  )
- ( /50505DCA MTHOLE P6 CONN_1
-  ( 1 GND )
+ ( /504F69A0 $noname  SW11 9 {Lib=SW_PUSH}
+  (    1 /SW_9 )
+  (    2 GND )
  )
- ( /504F6D83 SM0603 R1 22
-  ( 1 N-000004 )
-  ( 2 N-000006 )
+ ( /504F69AC $noname  SW5 0 {Lib=SW_PUSH}
+  (    1 /SW_0 )
+  (    2 GND )
  )
- ( /504F6D9F SM0603 R2 22
-  ( 1 N-000003 )
-  ( 2 N-000007 )
+ ( /504F69B2 $noname  SW14 . {Lib=SW_PUSH}
+  (    1 /SW_. )
+  (    2 GND )
  )
- ( /504F7282 SM0603 R3 10k
-  ( 1 /ISP_RESET )
-  ( 2 +5V )
+ ( /504F69C2 $noname  SW17 ENTER {Lib=SW_PUSH}
+  (    1 /SW_ENT )
+  (    2 GND )
  )
- ( /504F7440 SM0603 R4 1k
-  ( 1 /NUMLOCK_LED )
-  ( 2 N-000014 )
+ ( /504F69C8 $noname  SW16 + {Lib=SW_PUSH}
+  (    1 /SW_+ )
+  (    2 GND )
  )
- ( /504F6AEB CHERRY_MX_PCB_D SW1 NUMLOCK
-  ( 1 /SW_NUMLOCK )
-  ( 2 GND )
+ ( /504F69CE $noname  SW15 - {Lib=SW_PUSH}
+  (    1 /SW_- )
+  (    2 GND )
  )
- ( /504F6915 CHERRY_MX_PCB_D SW2 7
-  ( 1 /SW_7 )
-  ( 2 GND )
+ ( /504F6AD5 $noname  SW10 * {Lib=SW_PUSH}
+  (    1 /SW_* )
+  (    2 GND )
  )
- ( /504F6921 CHERRY_MX_PCB_D SW3 4
-  ( 1 /SW_4 )
-  ( 2 GND )
+ ( /504F6AE0 $noname  SW6 / {Lib=SW_PUSH}
+  (    1 /SW_/ )
+  (    2 GND )
  )
- ( /504F691B CHERRY_MX_PCB_D SW4 1
-  ( 1 /SW1 )
-  ( 2 GND )
+ ( /504F6AEB $noname  SW1 NUMLOCK {Lib=SW_PUSH}
+  (    1 /SW_NUMLOCK )
+  (    2 GND )
  )
- ( /504F69AC CHERRY_MX_PCB_D_WIDE SW5 0
-  ( 1 /SW_0 )
-  ( 2 GND )
+ ( /504F6B06 $noname  U1 AT90USB162 {Lib=AT90USB162}
+  (    1 /XTAL1 )
+  (    2 /XTAL2 )
+  (    3 GND )
+  (    4 +5V )
+  (    5 /SW_* )
+  (    6 /SW_- )
+  (    7 /SW_+ )
+  (    8 /SW_6 )
+  (    9 /SW_9 )
+  (   10 /SW_3 )
+  (   11 /SW_ENT )
+  (   12 /SW_. )
+  (   13 /SW2 )
+  (   14 /SW_0 )
+  (   15 /ISP_SCK )
+  (   16 /ISP_MOSI )
+  (   17 /ISP_MISO )
+  (   18 /SW8 )
+  (   19 /SW5 )
+  (   20 /SW_7 )
+  (   21 /SW_4 )
+  (   22 /SW1 )
+  (   23 /SW_NUMLOCK )
+  (   24 /ISP_RESET )
+  (   25 /NUMLOCK_LED )
+  (   26 /SW_/ )
+  (   27 N-000001 )
+  (   28 GND )
+  (   29 N-000014 )
+  (   30 N-000011 )
+  (   31 +5V )
+  (   32 +5V )
  )
- ( /504F6AE0 CHERRY_MX_PCB_D SW6 /
-  ( 1 /SW_/ )
-  ( 2 GND )
+ ( /504F6B7E $noname  D1 LED {Lib=LED}
+  (    1 N-000018 )
+  (    2 ? )
  )
- ( /504F6982 CHERRY_MX_PCB_D SW7 8
-  ( 1 /SW8 )
-  ( 2 GND )
+ ( /504F6B93 AVR-ISP-6  CON1 ISP {Lib=AVR-ISP-6}
+  (    1 /ISP_MISO )
+  (    2 +5V )
+  (    3 /ISP_SCK )
+  (    4 /ISP_MOSI )
+  (    5 /ISP_RESET )
+  (    6 GND )
  )
- ( /504F698E CHERRY_MX_PCB_D SW8 5
-  ( 1 /SW5 )
-  ( 2 GND )
+ ( /504F6BC1 $noname  J1 USB-MINI-B {Lib=USB-MINI-B}
+  (    1 +5V )
+  (    2 N-000004 )
+  (    3 N-000003 )
+  (    4 ? )
+  (    5 GND )
  )
- ( /504F6988 CHERRY_MX_PCB_D SW9 2
-  ( 1 /SW2 )
-  ( 2 GND )
+ ( /504F6D83 $noname  R1 22 {Lib=R}
+  (    1 N-000004 )
+  (    2 N-000011 )
  )
- ( /504F6AD5 CHERRY_MX_PCB_D SW10 *
-  ( 1 /SW_* )
-  ( 2 GND )
+ ( /504F6D9F $noname  R2 22 {Lib=R}
+  (    1 N-000003 )
+  (    2 N-000014 )
  )
- ( /504F69A0 CHERRY_MX_PCB_D SW11 9
-  ( 1 /SW_9 )
-  ( 2 GND )
+ ( /504F6DE6 $noname  C4 1u {Lib=C}
+  (    1 N-000001 )
+  (    2 GND )
  )
- ( /504F6994 CHERRY_MX_PCB_D SW12 6
-  ( 1 /SW_6 )
-  ( 2 GND )
+ ( /504F707A $noname  C1 100n {Lib=C}
+  (    1 +5V )
+  (    2 GND )
  )
- ( /504F699A CHERRY_MX_PCB_D SW13 3
-  ( 1 /SW_3 )
-  ( 2 GND )
+ ( /504F7087 $noname  C2 100n {Lib=C}
+  (    1 +5V )
+  (    2 GND )
  )
- ( /504F69B2 CHERRY_MX_PCB_D SW14 .
-  ( 1 /SW_. )
-  ( 2 GND )
+ ( /504F7097 $noname  C3 4u7 {Lib=C}
+  (    1 +5V )
+  (    2 GND )
  )
- ( /504F69CE CHERRY_MX_PCB_D SW15 -
-  ( 1 /SW_- )
-  ( 2 GND )
+ ( /504F7160 $noname  X1 CRYSTAL {Lib=CRYSTAL}
+  (    1 /XTAL1 )
+  (    2 /XTAL2 )
  )
- ( /504F69C8 CHERRY_MX_PCB_D_WIDE SW16 +
-  ( 1 /SW_+ )
-  ( 2 GND )
+ ( /504F716F $noname  C5 22p {Lib=C}
+  (    1 /XTAL1 )
+  (    2 GND )
  )
- ( /504F69C2 CHERRY_MX_PCB_D_WIDE SW17 ENTER
-  ( 1 /SW_ENT )
-  ( 2 GND )
+ ( /504F718B $noname  C6 22p {Lib=C}
+  (    1 /XTAL2 )
+  (    2 GND )
  )
- ( /504F6B06 TQFP32 U1 AT90USB162
-  ( 1 /XTAL1 )
-  ( 2 /XTAL2 )
-  ( 3 GND )
-  ( 4 +5V )
-  ( 5 /SW_* )
-  ( 6 /SW_- )
-  ( 7 /SW_+ )
-  ( 8 /SW_6 )
-  ( 9 /SW_9 )
-  ( 10 /SW_3 )
-  ( 11 /SW_ENT )
-  ( 12 /SW_. )
-  ( 13 /SW2 )
-  ( 14 /SW_0 )
-  ( 15 /ISP_SCK )
-  ( 16 /ISP_MOSI )
-  ( 17 /ISP_MISO )
-  ( 18 /SW8 )
-  ( 19 /SW5 )
-  ( 20 /SW_7 )
-  ( 21 /SW_4 )
-  ( 22 /SW1 )
-  ( 23 /SW_NUMLOCK )
-  ( 24 /ISP_RESET )
-  ( 25 /NUMLOCK_LED )
-  ( 26 /SW_/ )
-  ( 27 N-000001 )
-  ( 28 GND )
-  ( 29 N-000007 )
-  ( 30 N-000006 )
-  ( 31 +5V )
-  ( 32 +5V )
+ ( /504F7282 $noname  R3 10k {Lib=R}
+  (    1 /ISP_RESET )
+  (    2 +5V )
  )
- ( /504F7160 Q_49U3HMS X1 CRYSTAL
-  ( 1 /XTAL1 )
-  ( 2 /XTAL2 )
+ ( /504F7440 $noname  R4 1k {Lib=R}
+  (    1 /NUMLOCK_LED )
+  (    2 N-000018 )
+ )
+ ( /5052EB74 $noname  D2 LED {Lib=LED}
+  (    1 N-000018 )
+  (    2 GND )
  )
 )
 *
 { Allowed footprints by component:
-$component C1
- SM*
- C?
- C1-1
-$endlist
-$component C2
- SM*
- C?
- C1-1
-$endlist
-$component C3
- SM*
- C?
- C1-1
-$endlist
-$component C4
- SM*
- C?
- C1-1
-$endlist
-$component C5
- SM*
- C?
- C1-1
-$endlist
-$component C6
- SM*
- C?
- C1-1
-$endlist
 $component D1
  LED-3MM
  LED-5MM
@@ -239,6 +213,36 @@ $component R2
  R?-*
  SM1206
 $endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
 $component R3
  R?
  SM0603
@@ -253,5 +257,156 @@ $component R4
  R?-*
  SM1206
 $endlist
+$component D2
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
 $endfootprintlist
 }
+{ Pin List by Nets
+Net 1 "" ""
+ C4 1
+ U1 27
+Net 3 "" ""
+ J1 3
+ R2 1
+Net 4 "" ""
+ J1 2
+ R1 1
+Net 5 "/NUMLOCK_LED" "NUMLOCK_LED"
+ U1 25
+ R4 1
+Net 6 "/ISP_SCK" "ISP_SCK"
+ U1 15
+ CON1 3
+Net 7 "/SW_NUMLOCK" "SW_NUMLOCK"
+ U1 23
+ SW1 1
+Net 8 "/SW1" "SW1"
+ U1 22
+ SW4 1
+Net 9 "/ISP_MOSI" "ISP_MOSI"
+ U1 16
+ CON1 4
+Net 10 "/SW_4" "SW_4"
+ SW3 1
+ U1 21
+Net 11 "" ""
+ U1 30
+ R1 2
+Net 12 "/SW_7" "SW_7"
+ U1 20
+ SW2 1
+Net 14 "" ""
+ U1 29
+ R2 2
+Net 15 "/SW5" "SW5"
+ U1 19
+ SW8 1
+Net 16 "/ISP_MISO" "ISP_MISO"
+ CON1 1
+ U1 17
+Net 17 "/SW_/" "SW_/"
+ U1 26
+ SW6 1
+Net 18 "" ""
+ D1 1
+ D2 1
+ R4 2
+Net 19 "/ISP_RESET" "ISP_RESET"
+ R3 1
+ CON1 5
+ U1 24
+Net 20 "GND" "GND"
+ P5 1
+ P2 1
+ P6 1
+ P4 1
+ P3 1
+ P1 1
+ SW7 2
+ SW14 2
+ SW17 2
+ SW5 2
+ SW11 2
+ SW13 2
+ SW12 2
+ SW9 2
+ SW8 2
+ SW16 2
+ SW3 2
+ SW15 2
+ SW10 2
+ SW4 2
+ SW1 2
+ U1 3
+ SW2 2
+ SW6 2
+ C5 2
+ C6 2
+ J1 5
+ U1 28
+ C3 2
+ CON1 6
+ C2 2
+ D2 2
+ C1 2
+ C4 2
+Net 21 "+5V" "+5V"
+ U1 4
+ U1 31
+ U1 32
+ CON1 2
+ C1 1
+ C2 1
+ C3 1
+ J1 1
+ R3 2
+Net 22 "/SW_6" "SW_6"
+ SW12 1
+ U1 8
+Net 23 "/SW_." "SW_."
+ SW14 1
+ U1 12
+Net 24 "/SW_0" "SW_0"
+ SW5 1
+ U1 14
+Net 25 "/SW_9" "SW_9"
+ SW11 1
+ U1 9
+Net 26 "/SW_3" "SW_3"
+ SW13 1
+ U1 10
+Net 27 "/SW_ENT" "SW_ENT"
+ SW17 1
+ U1 11
+Net 28 "/SW2" "SW2"
+ U1 13
+ SW9 1
+Net 29 "/XTAL2" "XTAL2"
+ C6 1
+ X1 2
+ U1 2
+Net 30 "/XTAL1" "XTAL1"
+ X1 1
+ U1 1
+ C5 1
+Net 31 "/SW8" "SW8"
+ U1 18
+ SW7 1
+Net 32 "/SW_*" "SW_*"
+ U1 5
+ SW10 1
+Net 33 "/SW_-" "SW_-"
+ U1 6
+ SW15 1
+Net 34 "/SW_+" "SW_+"
+ U1 7
+ SW16 1
+}
+#End

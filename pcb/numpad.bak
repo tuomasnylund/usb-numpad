@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date to 13. syyskuuta 2012 16.18.52
+EESchema Schematic File Version 2  date to 13. syyskuuta 2012 16.19.21
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -36,10 +36,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
+Title "USB Cherry Numpad"
 Date "13 sep 2012"
-Rev ""
-Comp ""
+Rev "1"
+Comp "Tuomas Nylund"
 Comment1 ""
 Comment2 ""
 Comment3 ""
